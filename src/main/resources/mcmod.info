@@ -1,0 +1,16 @@
+[
+{
+  "modid": "skygui",
+  "name": "SkyGUI",
+  "description": "SkyGUI is a mod created to add a few features to Hypixel Skyblock's GUI with informations.",
+  "version": "${version}",
+  "mcversion": "1.8.9",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Nothing76"],
+  "credits": "Nothing76",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
