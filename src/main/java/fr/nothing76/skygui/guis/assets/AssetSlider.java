@@ -27,11 +27,10 @@ public class AssetSlider extends Asset {
 		
 		if (screen != null) {
 			System.out.println("test 2");
-			Minecraft.getMinecraft().getTextureManager().bindTexture(this.filepath);
 			if (this.value) {
-				Utils.drawTexturedRect(this.x, this.y, this.width, this.height, 0/64f, 64/64f, 32/64f, 64/64f, GL11.GL_NEAREST);
+				Utils.drawTexturedRect(this.x, this.y, this.width, this.height, 0/64f, 64/64f, 32/64f, 64/64f, 1, GL11.GL_NEAREST, this.filepath);
 			} else {
-				Utils.drawTexturedRect(this.x, this.y, this.width, this.height, 0/64f, 64/64f, 0/64f, 32/64f, GL11.GL_NEAREST);
+				Utils.drawTexturedRect(this.x, this.y, this.width, this.height, 0/64f, 64/64f, 0/64f, 32/64f, 1, GL11.GL_NEAREST, this.filepath);
 			}
 		} else {System.out.println("test 3");}
 	}

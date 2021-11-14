@@ -70,10 +70,12 @@ public class Utils {
      * @param uMax the end x of the texture on the image in proportion to the image
      * @param vMin the origin y of the texture on the image in proportion to the image
      * @param vMax the end y of the texture on the image in proportion to the image
-     * @param filter just use GL11.GL_NEAREST
+     * @param filter, just use GL11.GL_NEAREST
      */
-    public static void drawTexturedRect(float x, float y, float width, float height, float uMin, float uMax, float vMin, float vMax, int filter) {
-		GlStateManager.enableTexture2D();
+    public static void drawTexturedRect(float x, float y, float width, float height, float uMin, float uMax, float vMin, float vMax, int filter, float alpha) {
+		
+    	GlStateManager.color(1, 1, 1, alpha);
+    	GlStateManager.enableTexture2D();
 		GlStateManager.enableBlend();
 		GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL14.glBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -95,9 +97,9 @@ public class Utils {
         GlStateManager.disableBlend();
 	}
     
-    public static void drawTexturedRect(float x, float y, float width, float height, float uMin, float uMax, float vMin, float vMax, int filter, ResourceLocation filepath) {
+    public static void drawTexturedRect(float x, float y, float width, float height, float uMin, float uMax, float vMin, float vMax, int filter, float alpha, ResourceLocation filepath) {
     	Minecraft.getMinecraft().getTextureManager().bindTexture(filepath);
-    	drawTexturedRect(x, y, width, height, uMin, uMax, vMin, vMax, filter);
+    	drawTexturedRect(x, y, width, height, uMin, uMax, vMin, vMax, filter, alpha);
 	}
     
 }

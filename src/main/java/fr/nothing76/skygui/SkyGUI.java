@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(version = Resources.MOD_VERSION, name = Resources.MOD_NAME, modid = Resources.MOD_ID)
+@Mod(version = Resources.MOD_VERSION, name = Resources.MOD_NAME, modid = Resources.MOD_ID, clientSideOnly = true)
 public class SkyGUI {
 
 	@EventHandler
