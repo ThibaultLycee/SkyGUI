@@ -1,32 +1,27 @@
 package fr.nothing76.skygui.utils;
 
+import fr.nothing76.skygui.resources.Constants;
+
 public class SkyGuiEnums {
 
 	public enum GuiTypes {
-		SETTINGS;
+		SETTINGS,
+		NONE;
 	}
 	
-	public enum SettingBool{
+	
+	public enum SettingsSections {
+		MAIN(Utils.iota(Constants.SETTINGS_SECTION_ENUM, true));
 		
-		IS_MOD_ENABLED("Is mod enabled", "is_mod_enabled", true);
+		private int index;
 		
-		private String text, id;
-		private boolean value;
-		
-		private SettingBool(String text, String id, boolean value) {
-			this.text = text;
-			this.id = id;
-			this.value = value;
+		SettingsSections(int index) {
+			this.index = index;
 		}
 		
-		public void toggle() {
-			this.value = !this.value;
+		public int getValue() {
+			return this.index;
 		}
-		
-		public boolean getValue() {
-			return this.value;
-		}
-		
 	}
 	
 }

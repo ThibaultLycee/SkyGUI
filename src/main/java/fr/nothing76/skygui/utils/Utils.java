@@ -3,6 +3,8 @@ package fr.nothing76.skygui.utils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 
+import java.util.HashMap;
+
 import fr.nothing76.skygui.resources.Resources;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -11,11 +13,32 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 
 public class Utils {
 
+	
+	// Counts the total iotas
+	private static HashMap<String, Integer> iota_counts = new HashMap<String, Integer>();
+	/**
+	 * Simply an index counter
+	 */
+	public static int iota(String section, boolean reset) {
+		int iota_value = iota_counts.getOrDefault(section, -1) + 1;
+		if (reset) {
+			iota_counts.put(section, 0);
+			iota_value = 0;
+		} else {
+			iota_counts.put(section, iota_value);
+		}
+		return iota_value;
+	}
+	public static int iota(String section) {
+		return iota(section, false);
+	}
+	
 	/**
 	 * Send a chat message to the player
 	 * @param text the text to send
@@ -70,6 +93,11 @@ public class Utils {
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 
         GlStateManager.disableBlend();
+	}
+    
+    public static void drawTexturedRect(float x, float y, float width, float height, float uMin, float uMax, float vMin, float vMax, int filter, ResourceLocation filepath) {
+    	Minecraft.getMinecraft().getTextureManager().bindTexture(filepath);
+    	drawTexturedRect(x, y, width, height, uMin, uMax, vMin, vMax, filter);
 	}
     
 }

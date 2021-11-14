@@ -5,6 +5,9 @@ import java.util.List;
 
 import fr.nothing76.skygui.guis.assets.Asset;
 import fr.nothing76.skygui.guis.assets.AssetSlider;
+import fr.nothing76.skygui.listeners.RenderListener;
+import fr.nothing76.skygui.resources.Values;
+import fr.nothing76.skygui.utils.SkyGuiEnums;
 import fr.nothing76.skygui.utils.Utils;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -69,6 +72,10 @@ public class SkyGuiCommands extends CommandBase {
 				"§6§m-----------------------------------------§r";
 	}
 	
+	/**
+	 * Returns the list of arguments to complete the command
+	 *\/!\ NOT WORKING
+	 */
 	public List<String> addTabAutoCompletion(ICommandSender sender, String[] args, BlockPos pos) {
 		if (args.length == 1) {
 			return getListOfStringsMatchingLastWord(args, "help", "menu");
@@ -81,9 +88,13 @@ public class SkyGuiCommands extends CommandBase {
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) {
 		if (args.length == 0) {
-			Utils.sendMessage(getCommandUsage(sender), false);
+			Values.guiToOpen = SkyGuiEnums.GuiTypes.SETTINGS;
 		} else {
-			
+			if (args.length == 1) {
+				if (args[0].equalsIgnoreCase("help") || args[0].equalsIgnoreCase("?")) {
+					Utils.sendMessage(getCommandUsage(sender), false);
+				}
+			}
 		}
 	}
 

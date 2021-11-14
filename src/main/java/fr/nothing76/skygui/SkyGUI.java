@@ -1,8 +1,10 @@
 package fr.nothing76.skygui;
 
 import fr.nothing76.skygui.commands.SkyGuiCommands;
+import fr.nothing76.skygui.listeners.RenderListener;
 import fr.nothing76.skygui.resources.Resources;
 import net.minecraftforge.client.ClientCommandHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -20,6 +22,7 @@ public class SkyGUI {
 	@EventHandler
 	public void onInit(FMLInitializationEvent event) {
 		ClientCommandHandler.instance.registerCommand(new SkyGuiCommands());
+		MinecraftForge.EVENT_BUS.register(new RenderListener());
 	}
 	
 	@EventHandler
